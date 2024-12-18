@@ -1,0 +1,65 @@
+ppasagero:
+
+telefono: opcional, alfanumerio hasta 9
+
+direccion: opcional, alfanumerico hasta 70
+
+
+## Entities and Attributes
+
+## Diagrama de Entidades - Compañía Aérea
+
+### Entidad: Compañía
+* **nom:** (string, 40) - Nombre de la compañía (obligatorio)
+* **IATA:** (string, 6) - Código IATA (obligatorio)
+* **CODE3:** (string, 6) - Código de 3 letras (obligatorio)
+* **ICAO:** (string, 6) - Código ICAO (obligatorio)
+* **pais:** (string, 40) - País de origen (obligatorio)
+
+### Entidad: Avión
+* **num_serie:** (string, 30) - Número de serie (obligatorio)
+* **tipus:** (string, 10) - Tipo de avión (obligatorio)
+* **fabricant:** (string, 20) - Fabricante (obligatorio)
+* **any_fabricacio:** (int) - Año de fabricación (opcional)
+
+### Entidad: Aeroport
+* **codi:** (string, 4) - Código del aeropuerto (obligatorio)
+* **pais:** (string, 40) - País (obligatorio)
+* **ciutat:** (string, 40) - Ciudad (obligatorio)
+* **IATA:** (string, 4) - Código IATA (opcional)
+* **nom:** (string, 55) - Nombre del aeropuerto (obligatorio)
+* **any_construccio:** (int) - Año de construcción (opcional)
+
+### ... (resto de las entidades)
+
+### Entidad: Mostrador
+* **numero:** (int) - Número del mostrador
+
+### Entidad: Personal
+* **num_empleat:** (int, 6-8) - Número de empleado (obligatorio)
+* **nom:** (string, 25) - Nombre (obligatorio)
+* **cognom:** (string, 35) - Apellido (obligatorio)
+* **passaport:** (string, 20) - Número de pasaporte (obligatorio)
+* **sou:** (decimal) - Salario (obligatorio)
+
+### Entidad: Hostessa
+* **(Subconjunto de Personal)**
+
+### Entidad: Pilot
+* **(Subconjunto de Personal)**
+* **hores_vol:** (int, 4) - Horas de vuelo (opcional)
+
+### Entidad: Passatger
+* **passaport:** (string, 20) - Número de pasaporte (obligatorio)
+* **nom:** (string, 30) - Nombre (obligatorio)
+* **cognom:** (string, 50) - Apellido (opcional)
+* **email:** (string, 40) - Correo electrónico (opcional)
+* **data_naixement:** (date) - Fecha de nacimiento (opcional)
+* **genere:** (char) - Género (opcional)
+
+### Entidad: Vol
+* **codi:** (string, 9) - Código de vuelo (obligatorio)
+* **data:** (date) - Fecha de vuelo (obligatorio)
+* **durada:** (int) - Duración en minutos (obligatorio)
+* **descripcio:** (string) - Descripción del vuelo (opcional)
+

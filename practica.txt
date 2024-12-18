@@ -1,0 +1,75 @@
+*COMOMANDOS MySQL*
+------------------------------------------------------------------------------------------------------------------------------------------
+
+- PARA ENTRERAR:
+$ mysql -u root -p; 
+(escribimos la password)
+
+- para ver la bases de datos: 
+$ show databases;
+
+- para crear una database:
+$ create database;
+
+- para indicar la base de datos que vamos a trabajar: 
+$ use (nombre);
+
+- para saber en que base de datos estamos:
+$ select database();
+
+- crear una tabla: 
+
+$ create table (nombre);
+
+- para crear una ruta :
+
+$ source (arrastramos el archivo)
+
+- para borrar table/database:
+
+$ drop table/database (nombre);
+
+mirar tabla; 
+$ desc (nombre de la tabla )
+
+- para borrar una tabla 
+
+$ drop tables (nombre de la tabla )
+
+- para borrar algo
+
+$ drop  (nombre )
+- insertar datos en una tabla
+$insert intro (nombre de la tabla) values (datos, 'string' num dec 1000.2);
+
+clear screen
+$ \! cls
+select * from nom; → mostra valors dins de taula
+
+------------------------------------------------------------------------------------------------------------------------------------------
+                                                    RESTRICCIONES                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+$ PRIMARY KEY
+valor unico principal (no acepta nulos)
+
+$ NOT NULL
+no puede ser nulo
+
+$ UNIQUE
+no pueden haber 2 igual (no controla valores nulos)
+
+$ DEFAULT
+valor por defecto
+
+$ CHECK()
+pone un límite a los números
+>  >=  <  <=  =  !=  <>  AND  OR
+ex: check(sou > 600 AND sou < 5000)
+
+comment ; para crear comentarios 
+
+auto_increment (clave primaria) ; 
+
+$ CONSTRAINT
