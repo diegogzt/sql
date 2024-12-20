@@ -1,76 +1,86 @@
 CREATE DATABASE aereoport;
 
---itne un atributo "filial" el cual depende de si mismo para controlarse(no entendi tampoco) y pertenece a varios aviones
-CREATE TABLE compañia{
+DROP TABLE IF EXISTS compañia;
+DROP TABLE IF EXISTS avion;
+DROP TABLE IF EXISTS aereopuerto;
+DROP TABLE IF EXISTS mostrador;
+DROP TABLE IF EXISTS personal;
+DROP TABLE IF EXISTS hostesa;
+DROP TABLE IF EXISTS piloto;
+DROP TABLE IF EXISTS pasajero;
+DROP TABLE IF EXISTS vuelo;
+
+CREATE TABLE compañia (
+    nombre VARCHAR(50) NOT NULL,
+    code3 CHAR(3),
+    icao CHAR(4),
+    pais VARCHAR(60),
+    iata CHAR(3),
+    PRIMARY KEY (nombre)
+);
+
+CREATE TABLE avion (
+    num_serie INT NOT NULL,
+    tipo VARCHAR(50),
+    fabricante VARCHAR(100),
+    año_fabricacion YEAR,
+    PRIMARY KEY (num_serie)
+);
+
+CREATE TABLE aereopuerto (
+    codi INT NOT NULL,
+    pais VARCHAR(50),
+    ciudad VARCHAR(50),
+    IATA CHAR(3) NOT NULL,
+    nombre VARCHAR(100),
+    año_construccion YEAR,
+    PRIMARY KEY (codi)
+);
+
+CREATE TABLE mostrador (
+    numero INT NOT NULL,
+    codi_aereopuerto INT,
+    PRIMARY KEY (numero),
+    FOREIGN KEY (codi_aereopuerto) REFERENCES aereopuerto(codi)
+);
+
+CREATE TABLE personal (
+    num_empleado INT NOT NULL,
     nombre VARCHAR(50),
-    code3
-    icao
-    pais
-    IATA
-}
+    apellido VARCHAR(50),
+    pasaporte VARCHAR(20),
+    sueldo DECIMAL(10, 2),
+    PRIMARY KEY (num_empleado)
+);
 
---pertenece a una compañia y hace un vuelo o mas
-CREATE TABLE avion{
-    num_serie
-    tipo
-    fabricante
-    año_fabricacion
-}
+CREATE TABLE hostesa (
+    num_empleado INT NOT NULL,
+    PRIMARY KEY (num_empleado),
+    FOREIGN KEY (num_empleado) REFERENCES personal(num_empleado)
+);
 
---conecta con mostrador y conecta con vuelo. con vuelo tiene dos conexiones, origen y destino
-CREATE TABLE aereopuerto{
-    codi
-    pais
-    ciudad
-    IATA
-    nombre
-    año_construccion
+CREATE TABLE piloto (
+    num_empleado INT NOT NULL,
+    horas_voladas INT,
+    PRIMARY KEY (num_empleado),
+    FOREIGN KEY (num_empleado) REFERENCES personal(num_empleado)
+);
 
-}
+CREATE TABLE pasajero (
+    pasaporte VARCHAR(20) NOT NULL,
+    nombre VARCHAR(100),
+    apellido VARCHAR(100),
+    direccion VARCHAR(300),
+    telefono VARCHAR(15),
+    email VARCHAR(320),
+    fecha_nacimiento DATE,
+    genero CHAR(1),
+    PRIMARY KEY (pasaporte)
+);
 
---conectada a aereopuerto (tenir)
-CREATE TABLE mostrador{
-    numero 
-
-}
-
-
---tiene dos atributos que son entidades (es una disjuntiva)
-CREATE TABLE personal{
-    num_empleado
-    nombre
-    apellido
-    pasaporte
-    sueldo
-
-}
-
---pertenece a disjuntiva total
-CREATE TABLE hostesa{
-
-
-}
-
---pertenece a disjuntiva total de personal
-CREATE TABLE piloto{
-    horas_voladas
-}
-
-
-CREATE TABLE pasajero{
-    pasaporte
-    nombre
-    apellido
-    direccion
-    telefono
-    email
-    fecha_nacimiento DATE
-    genero
-
-}
-CREATE TABLE vuelo{
-    codigo
-    tiempo
-    descripcion
-}
-
+CREATE TABLE vuelo (
+    codigo VARCHAR(9) NOT NULL,
+    tiempo TIME,
+    descripcion VARCHAR(250),
+    PRIMARY KEY (codigo)
+);
