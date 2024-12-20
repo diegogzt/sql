@@ -1,17 +1,18 @@
+DELETE DATABASE aereoport;
 CREATE DATABASE IF NOT EXISTS aereoport;
 USE aereoport;
 
-DROP TABLE IF EXISTS compania;
-DROP TABLE IF EXISTS avion;
-DROP TABLE IF EXISTS aereopuerto;
+DROP TABLE IF EXISTS companyia;
+DROP TABLE IF EXISTS avio;
+DROP TABLE IF EXISTS aeroport;
 DROP TABLE IF EXISTS mostrador;
 DROP TABLE IF EXISTS personal;
-DROP TABLE IF EXISTS hostesa;
-DROP TABLE IF EXISTS piloto;
-DROP TABLE IF EXISTS pasajero;
-DROP TABLE IF EXISTS vuelo;
+DROP TABLE IF EXISTS hostessa;
+DROP TABLE IF EXISTS pilot;
+DROP TABLE IF EXISTS passatger;
+DROP TABLE IF EXISTS vol;
 
-CREATE TABLE compania (
+CREATE TABLE companyia (
     nombre VARCHAR(50) NOT NULL,
     code3 CHAR(3),
     icao CHAR(4),
@@ -20,7 +21,7 @@ CREATE TABLE compania (
     PRIMARY KEY (nombre)
 );
 
-CREATE TABLE avion (
+CREATE TABLE avio (
     num_serie INT NOT NULL,
     tipo VARCHAR(50),
     fabricante VARCHAR(100),
@@ -28,7 +29,7 @@ CREATE TABLE avion (
     PRIMARY KEY (num_serie)
 );
 
-CREATE TABLE aereopuerto (
+CREATE TABLE aeroport (
     codi INT NOT NULL,
     pais VARCHAR(50),
     ciudad VARCHAR(50),
@@ -40,9 +41,9 @@ CREATE TABLE aereopuerto (
 
 CREATE TABLE mostrador (
     numero INT NOT NULL,
-    codi_aereopuerto INT,
+    codi_aeroport INT,
     PRIMARY KEY (numero),
-    FOREIGN KEY (codi_aereopuerto) REFERENCES aereopuerto(codi)
+    FOREIGN KEY (codi_aeroport) REFERENCES aeroport(codi)
 );
 
 CREATE TABLE personal (
@@ -54,20 +55,20 @@ CREATE TABLE personal (
     PRIMARY KEY (num_empleado)
 );
 
-CREATE TABLE hostesa (
+CREATE TABLE hostessa (
     num_empleado INT NOT NULL,
     PRIMARY KEY (num_empleado),
     FOREIGN KEY (num_empleado) REFERENCES personal(num_empleado)
 );
 
-CREATE TABLE piloto (
+CREATE TABLE pilot (
     num_empleado INT NOT NULL,
     horas_voladas INT,
     PRIMARY KEY (num_empleado),
     FOREIGN KEY (num_empleado) REFERENCES personal(num_empleado)
 );
 
-CREATE TABLE pasajero (
+CREATE TABLE passatger (
     pasaporte VARCHAR(20) NOT NULL,
     nombre VARCHAR(100),
     apellido VARCHAR(100),
@@ -79,9 +80,10 @@ CREATE TABLE pasajero (
     PRIMARY KEY (pasaporte)
 );
 
-CREATE TABLE vuelo (
+CREATE TABLE vol (
     codigo VARCHAR(9) NOT NULL,
     tiempo TIME,
     descripcion VARCHAR(250),
     PRIMARY KEY (codigo)
 );
+
