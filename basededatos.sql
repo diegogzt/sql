@@ -1,4 +1,5 @@
-CREATE DATABASE aereoport;
+CREATE DATABASE IF NOT EXISTS aereoport;
+USE aereoport;
 
 DROP TABLE IF EXISTS compañia;
 DROP TABLE IF EXISTS avion;
