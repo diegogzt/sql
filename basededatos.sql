@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS aereoport;
 USE aereoport;
 
-DROP TABLE IF EXISTS compañia;
+DROP TABLE IF EXISTS compania;
 DROP TABLE IF EXISTS avion;
 DROP TABLE IF EXISTS aereopuerto;
 DROP TABLE IF EXISTS mostrador;
@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS piloto;
 DROP TABLE IF EXISTS pasajero;
 DROP TABLE IF EXISTS vuelo;
 
-CREATE TABLE compañia (
+CREATE TABLE compania (
     nombre VARCHAR(50) NOT NULL,
     code3 CHAR(3),
     icao CHAR(4),
@@ -24,7 +24,7 @@ CREATE TABLE avion (
     num_serie INT NOT NULL,
     tipo VARCHAR(50),
     fabricante VARCHAR(100),
-    año_fabricacion YEAR,
+    any_fabricacion YEAR,
     PRIMARY KEY (num_serie)
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE aereopuerto (
     ciudad VARCHAR(50),
     IATA CHAR(3) NOT NULL,
     nombre VARCHAR(100),
-    año_construccion YEAR,
+    any_construccion YEAR,
     PRIMARY KEY (codi)
 );
 
