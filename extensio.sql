@@ -30,7 +30,9 @@ ADD CONSTRAINT pk_avio PRIMARY KEY (num_serie);
 ALTER TABLE avio 
 ADD CONSTRAINT fk_avio_companyia FOREIGN KEY (companyia)
 REFERENCES companyia(nom)
-ON DELETE CASCADE;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
 
 -- ------------------------------------------------------
 --  Restricciones de la tabla aeroport
