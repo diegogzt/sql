@@ -49,7 +49,9 @@ ADD CONSTRAINT pk_mostrador PRIMARY KEY (numero, codi_aeroport);
 ALTER TABLE Mostrador 
 ADD CONSTRAINT fk_mostrador_aeroport FOREIGN KEY (codi_aeroport)
 REFERENCES aeroport(codi)
-ON DELETE CASCADE;
+ON DELETE CASCADE 
+ON UPDATE CASCADE
+;
 
 -- ------------------------------------------------------
 --  Restricciones de la tabla personal
